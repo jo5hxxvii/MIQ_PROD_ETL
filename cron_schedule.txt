@@ -1,0 +1,1 @@
+0 22 * * * cd /home/joshua/miq_data_loader && /home/joshua/miq_data_loader/.miq_etl_env/bin/python etl.py >> /home/joshua/miq_data_loader/cron.log 2>&1
