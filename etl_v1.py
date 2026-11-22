@@ -43,36 +43,12 @@ import paramiko
 from sqlalchemy import create_engine, text, types
 from sqlalchemy.dialects.postgresql import TIMESTAMP
 
-# # ── CONFIG ────────────────────────────────────────────────────
-# SFTP_HOST = os.environ.get("DLD_SFTP_HOST", "144.126.255.45")
-# SFTP_PORT = int(os.environ.get("DLD_SFTP_PORT", "22"))
-# SFTP_USERNAME = os.environ.get("DLD_SFTP_USERNAME", "aiq")
-# SFTP_PASSWORD = os.environ.get("DLD_SFTP_PASSWORD", "fvaMkCsu3tboNotZcBB")
-# SFTP_KEY_PATH = os.environ.get("DLD_SFTP_KEY_PATH", None)
-# SFTP_FOLDER = os.environ.get("DLD_SFTP_FOLDER", "/uploads")
 
-# PG_URL = os.environ.get(
-#     "DLD_PG_URL",
-#     "postgresql://doadmin:AVNS_yH4rB22omDE4Q93wusT@miq-db-postgresql-v1-do-user-23625062-0.g.db.ondigitalocean.com:25060/defaultdb",
-# )
-
-# # Slack webhook — set via environment variable
-# # export DLD_SLACK_WEBHOOK="https://hooks.slack.com/services/YOUR/WEBHOOK/URL"
-# # Leave empty to disable Slack notifications silently
-# SLACK_WEBHOOK = os.environ.get(
-#     "DLD_SLACK_WEBHOOK",
-#     "https://hooks.slack.com/services/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",
-# )
-
-# LOCAL_DOWNLOAD_FOLDER = "./dld_downloads"
-# BACKUP_SCHEMA_COUNT = 3
-# CHUNK_SIZE = 20000
-# DATE_KEYWORDS = ["at", "date", "time", "timestamp", "created", "updated"]
 #
 SFTP_HOST = _config.SFTP_HOST
-SFTP_PORT = int(os.environ.get("DLD_SFTP_PORT", "22"))
-SFTP_USERNAME = os.environ.get("DLD_SFTP_USERNAME", "aiq")
-SFTP_PASSWORD = os.environ.get("DLD_SFTP_PASSWORD", "fvaMkCsu3tboNotZcBB")
+SFTP_PORT = int(os.environ.get("DLD_SFTP_PORT", None))
+SFTP_USERNAME = os.environ.get("DLD_SFTP_USERNAME", None)
+SFTP_PASSWORD = os.environ.get("DLD_SFTP_PASSWORD", None)
 SFTP_KEY_PATH = os.environ.get("DLD_SFTP_KEY_PATH", None)
 SFTP_FOLDER = os.environ.get("DLD_SFTP_FOLDER", "/uploads")
 
@@ -81,12 +57,8 @@ PG_URL = os.environ.get(
     "postgresql://doadmin:AVNS_yH4rB22omDE4Q93wusT@miq-db-postgresql-v1-do-user-23625062-0.g.db.ondigitalocean.com:25060/defaultdb",
 )
 
-# Slack webhook — set via environment variable
-# export DLD_SLACK_WEBHOOK="https://hooks.slack.com/services/YOUR/WEBHOOK/URL"
-# Leave empty to disable Slack notifications silently
 SLACK_WEBHOOK = os.environ.get(
-    "DLD_SLACK_WEBHOOK",
-    "https://hooks.slack.com/services/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",
+    "DLD_SLACK_WEBHOOK", None
 )
 
 LOCAL_DOWNLOAD_FOLDER = "./dld_downloads"
